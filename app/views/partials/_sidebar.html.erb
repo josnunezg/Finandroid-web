@@ -1,0 +1,8 @@
+<nav class="grey lighten-3 nav-extended z-depth-0">
+  <div class="nav-content center">
+      <span class="center nav-title grey-text"><%= model.model_name.human(count: 2) %></span>
+      <%= link_to [:new, model.to_s.underscore], class: "btn-floating btn-large halfway-fab waves-effect waves-light", remote: true do %>
+        <%= material_icon.add %>
+      <% end %>
+    </div>
+</nav>
