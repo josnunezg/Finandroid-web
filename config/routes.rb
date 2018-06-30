@@ -9,7 +9,11 @@ Rails.application.routes.draw do
     }
 
     resources :summaries
-    resources :bank_accounts
+    resources :bank_accounts do
+      member do
+        get :show_balance
+      end
+    end
     resources :categories
     resources :expenses
     resources :groups

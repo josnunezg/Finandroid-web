@@ -10,6 +10,7 @@
       </h5>
     </div>
     <div class="card-action">
+      <%= link_to "balance", show_balance_bank_account_path(bank_account), remote: true %>
       <%= link_to t('actions.edit', model: ''), edit_bank_account_path(bank_account), remote: true %>
       <a class="modal-trigger" href="#delete-confirm-<%= bank_account.id %>"><%= t('general.delete') %></a>
     </div>

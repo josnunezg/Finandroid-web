@@ -51,6 +51,13 @@ class BankAccountsController < ApplicationController
     end
   end
 
+  def show_balance
+    @balance = BankAccount.find_with_balance(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
 
   def bank_account_params
