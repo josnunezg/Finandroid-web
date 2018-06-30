@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Finandroid</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="<%= asset_url("/assets/finandroid-icons/apple-icon-57x57.png") %>">
+    <link rel="apple-touch-icon" sizes="60x60" href="<%= asset_url("/assets/finandroid-icons/apple-icon-60x60.png") %>">
+    <link rel="apple-touch-icon" sizes="72x72" href="<%= asset_url("/assets/finandroid-icons/apple-icon-72x72.png") %>">
+    <link rel="apple-touch-icon" sizes="76x76" href="<%= asset_url("/assets/finandroid-icons/apple-icon-76x76.png") %>">
+    <link rel="apple-touch-icon" sizes="114x114" href="<%= asset_url("/assets/finandroid-icons/apple-icon-114x114.png") %>">
+    <link rel="apple-touch-icon" sizes="120x120" href="<%= asset_url("/assets/finandroid-icons/apple-icon-120x120.png") %>">
+    <link rel="apple-touch-icon" sizes="144x144" href="<%= asset_url("/assets/finandroid-icons/apple-icon-144x144.png") %>">
+    <link rel="apple-touch-icon" sizes="152x152" href="<%= asset_url("/assets/finandroid-icons/apple-icon-152x152.png") %>">
+    <link rel="apple-touch-icon" sizes="180x180" href="<%= asset_url("/assets/finandroid-icons/apple-icon-180x180.png") %>">
+    <link rel="icon" type="image/png" sizes="192x192"  href="<%= asset_url("/assets/finandroid-icons/android-icon-192x192.png") %>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<%= asset_url("/assets/finandroid-icons/favicon-32x32.png") %>">
+    <link rel="icon" type="image/png" sizes="96x96" href="<%= asset_url("/assets/finandroid-icons/favicon-96x96.png") %>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<%= asset_url("/assets/finandroid-icons/favicon-16x16.png") %>">
+    <link rel="manifest" href="<%= asset_url("/assets/finandroid-icons/manifest.json") %>">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="<%= asset_url("/assets/finandroid-icons/ms-icon-144x144.png") %>">
+    <meta name="theme-color" content="#ffffff">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <ul id="slide-out" class="side-nav fixed z-depth-0">
+      <li>
+        <div class="user-view">
+          <div class="background cyan lighten-2">
+            <%= image_tag("psyduck.png", style: "opacity: .2;") %>
+          </div>
+          <%= image_tag("psyduck.png", class: "circle") %>
+          <a class="dropdown-button" data-activates='dropdown1'><span class="white-text name"><%= current_user.full_name %></span></a>
+          <ul id='dropdown1' class='dropdown-content'>
+            <li>
+                <%= link_to profile_path(current_user) do %>
+                  Perfil
+                  <%= material_icon.person %>
+                <% end %>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                  Cerrar sesión
+                  <%= material_icon.exit_to_app %>
+                <% end %>
+            </li>
+          </ul>
+          <a href=""><span class="white-text email"><%= current_user.email %></span></a>
+        </div>
+      </li>
+        <% items_sidebar.each do |item| %>
+          <li>
+            <%= link_to item[:model], class: "#{active?(item[:model])} waves-effect" do %>
+              <%= material_icon.send(item[:icon]) %>
+              <%= item[:model].model_name.human(count: 2) %>
+            <% end %>
+          </li>
+        <% end %>
+    </ul>
+    <main>
+      <%= yield %>
+    </main>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  </body>
+</html>

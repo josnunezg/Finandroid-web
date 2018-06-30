@@ -1,0 +1,37 @@
+<div class="card horizontal">
+  <div class="card-stacked">
+    <div class="card-content">
+      <h5>
+        <%= bank_account.name %>
+        <small>
+          <%= BankAccount.human_attribute_name(:balance) %>
+          $<%=  bank_account.balance %>
+        </small>
+      </h5>
+    </div>
+    <div class="card-action">
+      <%= link_to t('actions.edit', model: ''), edit_bank_account_path(bank_account), remote: true %>
+      <a class="modal-trigger" href="#delete-confirm-<%= bank_account.id %>"><%= t('general.delete') %></a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal Structure -->
+<div id="delete-confirm-<%= bank_account.id %>" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h2 class="center">¿Estas seguro?</h2>
+    <div class="container center">
+      <div class="row">
+        <div class="col s6 center">
+          <%= link_to t('general.yes'), bank_account_path(bank_account), method: :delete, remote: true, class: 'btn red btn-block' %>
+        </div>
+        <div class="col s6 center">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn btn-block white black-text">
+            <%= t('general.no') %>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

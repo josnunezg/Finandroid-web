@@ -1,0 +1,11 @@
+<% if @bank_account.errors.full_messages.any? %>
+  <% @bank_account.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded')
+  <% end %>
+<% else %>
+  var id = "<%= @bank_account.id %>";
+  $('#bank_account-'+id).html("<%= j render(partial: @bank_account) %>");
+  Materialize.toast("Cuenta actualizada", 4000, 'green rounded')
+  $('#form-bank_account').modal('close');
+  $('#form-bank_account').html("");
+<% end %>

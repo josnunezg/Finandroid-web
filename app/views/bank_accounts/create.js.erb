@@ -1,0 +1,11 @@
+<% if @bank_account.errors.full_messages.any?%>
+  <% @bank_account.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded')
+  <% end %>
+<% else %>
+  $('#form-bank_account').modal('close');
+  $('#form-bank_account').html("");
+  var id = "<%= @bank_account.id %>"
+  $('#index-bank_account').append("<div class='col s6' id='bank_account-"+ id +"' ><%= j render(partial: @bank_account) %></div>");
+  Materialize.toast("Cuenta creada", 4000, 'green rounded')
+<% end %>

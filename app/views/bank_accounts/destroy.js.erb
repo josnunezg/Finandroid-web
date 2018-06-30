@@ -1,0 +1,4 @@
+var id = "<%= @bank_account.id %>";
+$('#delete-confirm-'+id).modal('close');
+$('#bank_account-'+id).remove();
+Materialize.toast("Cuenta eliminada correctamente", 4000, 'green rounded')

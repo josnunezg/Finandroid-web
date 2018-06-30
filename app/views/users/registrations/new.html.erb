@@ -1,0 +1,45 @@
+<div class="col s8 offset-s2">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <div class="card sticky-action z-depth-4">
+      <div class="card-content">
+        <div class="row">
+          <div class="input-field col s6">
+            <%= f.text_field :first_name, autofocus: true, class: 'validate' %>
+            <%= f.label :first_name %>
+          </div>
+
+          <div class="input-field col s6">
+            <%= f.text_field :last_name, class: 'validate' %>
+            <%= f.label :last_name %>
+          </div>
+
+          <div class="input-field col s6">
+            <%= f.text_field :username, class: 'validate' %>
+            <%= f.label :username %>
+          </div>
+
+          <div class="input-field col s6">
+            <%= f.email_field :email, autocomplete: "email", class: 'validate' %>
+            <%= f.label :email %>
+          </div>
+
+          <div class="input-field col s6">
+            <%= f.password_field :password, autocomplete: "off", class: 'validate', placeholder: "#{@minimum_password_length} characters minimum" %>
+            <%= f.label :password %>
+          </div>
+
+          <div class="input-field col s6">
+            <%= f.password_field :password_confirmation, autocomplete: "off", class:"validates", placeholder: "#{@minimum_password_length} characters minimum" %>
+            <%= f.label :password_confirmation %>
+          </div>
+          <div class="input-field col s12">
+            <%= f.submit "Registrarme", class: "btn btn-block btn-large" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-action">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  <% end %>
+</div>

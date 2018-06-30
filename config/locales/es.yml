@@ -1,0 +1,66 @@
+es:
+  activerecord:
+    models:
+      bank_account:
+        one: Cuenta
+        other: Cuentas
+      category:
+        one: Categoria
+        other: Categorias
+      expense:
+        one: Gasto
+        other: Gastos
+      group:
+        one: Grupo
+        other: Grupos
+      salary:
+        one: Ingreso
+        other: Ingresos
+      summary:
+        one: Resumen
+        other: Resumenes
+      user:
+        one: Usuario
+        other: Usuarios
+    attributes:
+      bank_account:
+        name: Nombre
+        balance: Saldo
+      category:
+        name: Nombre
+        default: Predeterminada
+      expense:
+        name: Nombre
+        description: Descripción
+        amount: Monto
+        bank_account_id: Cuenta
+        category_id: Categoria
+      group:
+        name: Nombre
+      salary:
+        name: Nombre
+        description: Descripción
+        bank_account: Cuenta
+      user:
+        first_name: Nombre
+        last_name: Apellido
+        email: Correo
+        password: Contraseña
+        password_confirmation: Confirma contraseña
+        username: Usuario
+    errors:
+      models:
+        bank_account:
+          attributes:
+            name:
+              blank: no puede estar en blanco
+  actions:
+    new: Nuevo %{model}
+    edit: Editar %{model}
+  general:
+    new: Crear
+    edit: Actualizar
+    cancel: Cancelar
+    delete: Eliminar
+    yes: Sí
+    no: No

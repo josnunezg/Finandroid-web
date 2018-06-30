@@ -1,0 +1,14 @@
+<%= render 'sidebar' %>
+<div class="container">
+  <div class="row" id="index-bank_account">
+    <% @bank_accounts.each do |bk| %>
+      <div class="col s6" id="<%= "bank_account-#{bk.id}" %>">
+        <%= render bk %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+<div class="modal" id="form-bank_account">
+</div>
