@@ -1,0 +1,14 @@
+<% if @salary.errors.full_messages.any? %>
+  <% @salary.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded');
+  <% end %>
+<% else %>
+  $("#salary-<%= @salary.id %>-tr").html(
+    "<td><%= @salary.name %></td>"+
+    "<td><%= @salary.description.truncate(20) %></td>"+
+    "<td><%= @salary.bank_account.try(:name) %></td>"+
+    "<td>$<%= @salary.processed_ammount %>.-</td>"
+  );
+  $("#modal-salary").modal('close');
+  Materialize.toast("Ingreso actualizado", 4000, 'green rounded');
+<% end %>

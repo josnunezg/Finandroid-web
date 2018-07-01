@@ -1,0 +1,32 @@
+<%= form_for @expense, remote: true do |f|  %>
+  <div class="modal-content">
+    <table class="bordered">
+      <tr>
+        <th><%= Expense.human_attribute_name(:name) %></th>
+        <td><%= f.text_field :name, class: 'validate' %></td>
+      </tr>
+      <tr>
+        <th><%= Expense.human_attribute_name(:description) %></th>
+        <td><%= f.text_area :description, class: 'materialize-textarea' %></td>
+      </tr>
+      <tr>
+        <th><%= Expense.human_attribute_name(:bank_account_id) %></th>
+        <td><%= f.select :bank_account_id, bank_accounts_for_form %></td>
+      </tr>
+      <tr>
+        <th><%= Expense.human_attribute_name(:category_id) %></th>
+        <td><%= f.select :category_id, categories_for_form %></td>
+      </tr>
+      <tr>
+        <th><%= Expense.human_attribute_name(:amount) %></th>
+        <td><%= f.number_field :amount, class: 'validate' %></td>
+      </tr>
+    </table>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">
+      <%= t('general.cancel') %>
+    </a>
+    <%= f.submit t("general.#{params[:action]}"), class: 'modal-action waves-effect waves-green btn-flat' %>
+  </div>
+<% end %>

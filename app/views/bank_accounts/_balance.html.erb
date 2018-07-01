@@ -1,12 +1,13 @@
 <% salaries = @balance.salaries %>
 <% expenses = @balance.expenses %>
+<p id="total-balance" style="display: none;" ><%= @balance.balance %></p>
 <div class="modal-content">
   <h3>
     <%= @balance.name %>
     <small>
       Saldo
-      <em id="total-balance">
-        $<%= @balance.balance %>
+      <em>
+        $<%= @balance.processed_balance %>.-
       </em>
     </small>
   </h3>
@@ -21,8 +22,8 @@
         <% salaries.each do |sal| %>
           <li class="collection-item">
             <%= sal.name %>
-            <span class="secondary-content green-text">
-              $<%= sal.amount %>
+            <span class="secondary-content">
+              $<%= sal.processed_ammount %>.-
             </span>
           </li>
         <% end %>
@@ -30,7 +31,7 @@
           <h6 class="align-center">Total</h6>
         </li>
         <li class="collection-item center">
-          <h6 class="align-center">$<%= salaries.total %></h6>
+          <h6 class="align-center green-text">$<%= salaries.processed_total %>.-</h6>
         </li>
       </ul>
     </div>
@@ -44,8 +45,8 @@
         <% expenses.each do |exp| %>
           <li class="collection-item">
             <%= exp.name %>
-            <span class="secondary-content red-text">
-              $<%= exp.amount %>
+            <span class="secondary-content">
+              $<%= exp.processed_ammount %>.-
             </span>
           </li>
         <% end %>
@@ -53,7 +54,7 @@
           <h6 class="align-center">Total</h6>
         </li>
         <li class="collection-item center">
-          <h6 class="align-center">$<%= expenses.total %></h6>
+          <h6 class="align-center red-text">$<%= expenses.processed_total %>.-</h6>
         </li>
       </ul>
     </div>

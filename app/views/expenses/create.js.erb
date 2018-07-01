@@ -1,0 +1,20 @@
+<% if @expense.errors.full_messages.any? %>
+  alert('Hola');
+  <% @expense.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded');
+  <% end %>
+<% else %>
+  var id = "<%= @expense.id %>";
+  $("#body-table-expenses").append(
+    "<tr onclick='showExpense("+id+");' id='expense-"+id+"-tr'>"+
+    "<td><%= @expense.name %></td>"+
+    "<td><%= @expense.description.truncate(20) %></td>"+
+    "<td><%= @expense.bank_account.try(:name) %></td>"+
+    "<td><%= @expense.category.try(:name) %></td>"+
+    "<td>$<%= @expense.processed_ammount %>.-</td>"+
+    "</tr>"
+    )
+  $("div.container").append('<%= link_to "", expense_path(@expense), remote: true, style: "display: none;", id: "expense-#{@expense.id}-link" %>');
+  $("#modal-expense").modal('close');
+  Materialize.toast("Gasto creado", 4000, 'green rounded');
+<% end %>

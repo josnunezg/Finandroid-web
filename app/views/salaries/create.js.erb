@@ -1,0 +1,18 @@
+<% if @salary.errors.full_messages.any? %>
+  <% @salary.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded');
+  <% end %>
+<% else %>
+  var id = "<%= @salary.id %>";
+  $("#body-table-salary").append(
+    "<tr onclick='showSalary("+id+");' id='salary-"+id+"-tr'>"+
+    "<td><%= @salary.name %></td>"+
+    "<td><%= @salary.description.truncate(20) %></td>"+
+    "<td><%= @salary.bank_account.try(:name) %></td>"+
+    "<td>$<%= @salary.processed_ammount %>.-</td>"+
+    "</tr>"
+    )
+  $("div.container").append('<%= link_to "", salary_path(@salary), remote: true, style: "display: none;", id: "salary-#{@salary.id}-link" %>');
+  $("#modal-salary").modal('close');
+  Materialize.toast("Ingreso creado", 4000, 'green rounded');
+<% end %>

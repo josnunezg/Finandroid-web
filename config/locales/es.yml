@@ -40,7 +40,8 @@ es:
       salary:
         name: Nombre
         description: Descripción
-        bank_account: Cuenta
+        bank_account_id: Cuenta
+        amount: Monto
       user:
         first_name: Nombre
         last_name: Apellido
@@ -54,6 +55,18 @@ es:
           attributes:
             name:
               blank: no puede estar en blanco
+        salary:
+          attributes:
+            name:
+              blank: no puede estar en blanco
+            bank_account_id:
+              blank: es obligatoria
+        expense:
+          attributes:
+            name:
+              blank: no puede estar en blanco
+            bank_account_id:
+              blank: es obligatoria
   actions:
     new: Nuevo %{model}
     edit: Editar %{model}

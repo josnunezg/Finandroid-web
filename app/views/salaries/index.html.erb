@@ -1,0 +1,28 @@
+<%= render 'partials/sidebar', model: Salary %>
+
+<div class="container">
+  <table class="highlight">
+    <thead>
+      <tr>
+        <th><%= Salary.human_attribute_name(:name) %></th>
+        <th><%= Salary.human_attribute_name(:description) %></th>
+        <th><%= Salary.human_attribute_name(:bank_account_id) %></th>
+        <th><%= Salary.human_attribute_name(:amount) %></th>
+      </tr>
+    </thead>
+    <tbody id="body-table-salary">
+      <% @salaries.each do |sal| %>
+        <tr onclick="showSalary(<%= sal.id %>);" id="<%= "salary-#{sal.id}-tr" %>">
+          <td><%= sal.name %></td>
+          <td><%= sal.description.truncate(20) %></td>
+          <td><%= sal.bank_account.try(:name) %></td>
+          <td>$<%= sal.processed_ammount %>.-</td>
+          <%= link_to "",salary_path(sal), remote: true, style: "display: none", id: "salary-#{sal.id}-link" %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal modal-fixed-footer" id="modal-salary">
+</div>

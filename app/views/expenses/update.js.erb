@@ -1,0 +1,15 @@
+<% if @expense.errors.full_messages.any? %>
+  <% @expense.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded');
+  <% end %>
+<% else %>
+  $("#expense-<%= @expense.id %>-tr").html(
+    "<td><%= @expense.name %></td>"+
+    "<td><%= @expense.description.truncate(20) %></td>"+
+    "<td><%= @expense.bank_account.try(:name) %></td>"+
+    "<td><%= @expense.category.try(:name) %></td>"+
+    "<td>$<%= @expense.processed_ammount %>.-</td>"
+  );
+  $("#modal-expense").modal('close');
+  Materialize.toast("Gasto actualizado", 4000, 'green rounded');
+<% end %>

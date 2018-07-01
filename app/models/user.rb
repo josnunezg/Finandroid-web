@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_many :categories
   has_many :bank_accounts
-  has_many :salaries, :through => :bank_account
-  has_many :expenses, :through => :bank_account
+  has_many :salaries, :through => :bank_accounts
+  has_many :expenses, :through => :bank_accounts
 
   # Muestra el nombre completo
   def full_name

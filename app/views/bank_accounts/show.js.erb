@@ -1,0 +1,11 @@
+$("#balance-bank_account").html("<%= j render(partial: 'balance') %>");
+$("#balance-bank_account").modal({
+  ready: function () {
+    var p = $("p#total-balance").html();
+    var balance = p.trim();
+    if(balance > 0) $("em").addClass('green-text');
+    else if(balance < 0) $("em").addClass('red-text');
+    else $("em").addClass('grey-text');
+  }
+});
+$("#balance-bank_account").modal('open');

@@ -1,0 +1,28 @@
+<div class="modal-content">
+  <table class="bordered">
+    <tr>
+      <th><%= Expense.human_attribute_name(:name) %></th>
+      <td><%= @expense.name %></td>
+    </tr>
+    <tr>
+      <th><%= Expense.human_attribute_name(:description) %></th>
+      <td><%= @expense.description %></td>
+    </tr>
+    <tr>
+      <th><%= Expense.human_attribute_name(:bank_account_id) %></th>
+      <td><%= @expense.bank_account.try(:name) %></td>
+    </tr>
+    <tr>
+      <th><%= Expense.human_attribute_name(:category_id) %></th>
+      <td><%= @expense.category.try(:name) %></td>
+    </tr>
+    <tr>
+      <th><%= Expense.human_attribute_name(:amount) %></th>
+      <td>$<%= @expense.processed_ammount %>.-</td>
+    </tr>
+  </table>
+</div>
+<div class="modal-footer">
+  <%= link_to t('actions.edit', model: ''), edit_expense_path(@expense), class: 'modal-action waves-effect waves-green btn-flat', remote: true %>
+  <%= link_to t('general.delete'), expense_path(@expense), method: :delete, class: 'modal-action waves-effect waves-green btn-flat', remote: true %>
+</div>

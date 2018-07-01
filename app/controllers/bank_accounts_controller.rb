@@ -7,6 +7,13 @@ class BankAccountsController < ApplicationController
     #render :new if @bank_accounts.empty?
   end
 
+  def show
+    @balance = BankAccount.find_with_balance(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def new
     @bank_account = current_user.bank_accounts.new
     respond_to do |format|
@@ -48,13 +55,6 @@ class BankAccountsController < ApplicationController
       else
         format.js
       end
-    end
-  end
-
-  def show_balance
-    @balance = BankAccount.find_with_balance(params[:id])
-    respond_to do |format|
-      format.js
     end
   end
 
