@@ -1,0 +1,9 @@
+<% if @category.errors.full_messages.any? %>
+  <% @category.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 4000, 'red rounded');
+  <% end %>
+<% else %>
+  $("#modal-category").modal('close');
+  $("#category-index").append("<div class='col m6 l6 xl6'><%= j render(partial: @category) %></div>");
+  Materialize.toast("Categoria creada", 4000, 'green rounded');
+<% end %>
