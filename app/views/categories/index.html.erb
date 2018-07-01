@@ -1,1 +1,7 @@
-<%= render 'partials/sidebar', model: Category %>
+<div class="row">
+  <% @categories.each do |cat| %>
+    <div class="col m6 l6 xl6">
+      <%= render cat %>
+    </div>
+  <% end %>
+</div>

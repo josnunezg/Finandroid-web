@@ -1,6 +1,7 @@
 class BankAccountsController < ApplicationController
 
   before_action :set_bank_account, except: [:index, :new, :create]
+  before_action :authorize_resource
 
   def index
     @bank_accounts = current_user.bank_accounts
@@ -66,6 +67,10 @@ class BankAccountsController < ApplicationController
 
   def set_bank_account
     @bank_account = BankAccount.find(params[:id])
+  end
+
+  def authorize_resource
+    authorize!(params[:action].to_sym, @bank_account || BankAccount)
   end
 
 end

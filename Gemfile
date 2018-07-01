@@ -29,6 +29,8 @@ gem 'materialize-sass'
 
 gem 'material_icons'
 
+gem 'cancan'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

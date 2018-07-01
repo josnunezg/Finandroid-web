@@ -1,0 +1,19 @@
+<div class="card horizontal hoverable">
+  <div class="card-stacked">
+    <div class="card-content">
+      <h4>
+        <%= category.default ? t("categories.#{category.name}") : category.name %>
+        <% if category.default %>
+          <span class="badge">
+            <%= Category.human_attribute_name(:default) %>
+          </span>
+        <% end %>
+      </h4>
+    </div>
+    <% if can? :manage, category %>
+      <div class="card-action">
+        <%= link_to "Editar", edit_category_path(category) %>
+      </div>
+    <% end %>
+  </div>
+</div>

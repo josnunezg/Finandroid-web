@@ -1,13 +1,11 @@
-<%= render 'partials/sidebar', model: BankAccount %>
-<div class="container">
-  <div class="row" id="index-bank_account">
-    <% @bank_accounts.each do |bk| %>
-      <div class="col s6" id="<%= "bank_account-#{bk.id}" %>">
-        <%= render bk %>
-      </div>
-    <% end %>
-  </div>
+<div class="row" id="index-bank_account">
+  <% @bank_accounts.each do |bk| %>
+    <div class="col m12 l6 xl6" id="<%= "bank_account-#{bk.id}" %>">
+      <%= render bk %>
+    </div>
+  <% end %>
 </div>
+
 
 
 <div class="modal" id="form-bank_account">

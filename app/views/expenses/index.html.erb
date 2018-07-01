@@ -1,30 +1,26 @@
-<%= render 'partials/sidebar', model: Expense %>
-
-<div class="container">
-  <table class="highlight">
-    <thead>
-      <tr>
-        <th><%= Expense.human_attribute_name(:name) %></th>
-        <th><%= Expense.human_attribute_name(:description) %></th>
-        <th><%= Expense.human_attribute_name(:bank_account_id) %></th>
-        <th><%= Expense.human_attribute_name(:category_id) %></th>
-        <th><%= Expense.human_attribute_name(:amount) %></th>
+<table class="highlight">
+  <thead>
+    <tr>
+      <th><%= Expense.human_attribute_name(:name) %></th>
+      <th><%= Expense.human_attribute_name(:description) %></th>
+      <th><%= Expense.human_attribute_name(:bank_account_id) %></th>
+      <th><%= Expense.human_attribute_name(:category_id) %></th>
+      <th><%= Expense.human_attribute_name(:amount) %></th>
+    </tr>
+  </thead>
+  <tbody id="body-table-expenses">
+    <% @expenses.each do |exp| %>
+      <tr onclick="showExpense(<%= exp.id %>);" id="<%= "expense-#{exp.id}-tr" %>">
+        <td><%= exp.name %></td>
+        <td><%= exp.description.truncate(20) %></td>
+        <td><%= exp.bank_account.try(:name) %></td>
+        <td><%= exp.category.try(:name) %></td>
+        <td>$<%= exp.processed_ammount %>.-</td>
+        <%= link_to "",expense_path(exp), remote: true, style: "display: none", id: "expense-#{exp.id}-link" %>
       </tr>
-    </thead>
-    <tbody id="body-table-expenses">
-      <% @expenses.each do |exp| %>
-        <tr onclick="showExpense(<%= exp.id %>);" id="<%= "expense-#{exp.id}-tr" %>">
-          <td><%= exp.name %></td>
-          <td><%= exp.description.truncate(20) %></td>
-          <td><%= exp.bank_account.try(:name) %></td>
-          <td><%= exp.category.try(:name) %></td>
-          <td>$<%= exp.processed_ammount %>.-</td>
-          <%= link_to "",expense_path(exp), remote: true, style: "display: none", id: "expense-#{exp.id}-link" %>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+    <% end %>
+  </tbody>
+</table>
 
 <div class="modal modal-fixed-footer" id="modal-expense">
 </div>

@@ -1,6 +1,7 @@
 class SalariesController < ApplicationController
 
   before_action :set_salary, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_resource
 
   def index
     @salaries = current_user.salaries.includes(:bank_account)
@@ -56,6 +57,10 @@ class SalariesController < ApplicationController
   def salary_params
     params.require(:salary).permit(:name, :description, :bank_account_id,
                                    :amount)
+  end
+
+  def authorize_resource
+    authorize!(params[:action].to_sym, @salary || Salary)
   end
 
 end

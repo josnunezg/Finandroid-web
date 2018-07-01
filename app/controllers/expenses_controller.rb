@@ -1,6 +1,7 @@
 class ExpensesController < ApplicationController
 
   before_action :set_expense, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_resource
 
   def index
     @expenses = current_user.expenses.includes(:bank_account, :category)
@@ -56,6 +57,10 @@ class ExpensesController < ApplicationController
   def expense_params
     params.require(:expense).permit(:name, :description, :bank_account_id,
                                     :category_id, :amount)
+  end
+
+  def authorize_resource
+    authorize!(params[:action].to_sym, @expense || Expense)
   end
 
 end
