@@ -12,9 +12,27 @@
     </div>
     <% if can? :manage, category %>
       <div class="card-action">
-        <%= link_to "Editar", edit_category_path(category) %>
-        <%= link_to "Eliminar", category_path(category), method: :delete %>
+        <%= link_to t('actions.edit', model: ''), edit_category_path(category), remote: true %>
+        <a class="modal-trigger" href="#delete-confirm-<%= category.id %>"><%= t('general.delete') %></a>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div id="delete-confirm-<%= category.id %>" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h2 class="center">¿Estas seguro?</h2>
+    <div class="container center">
+      <div class="row">
+        <div class="col s6 center">
+          <%= link_to t('general.yes'), category_path(category), method: :delete, remote: true, class: 'btn red btn-block' %>
+        </div>
+        <div class="col s6 center">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn btn-block white black-text">
+            <%= t('general.no') %>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

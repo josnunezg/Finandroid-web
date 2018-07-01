@@ -1,0 +1,4 @@
+var id = "<%= @category.id %>";
+$("#delete-confirm-"+id).modal('close');
+$("#category-"+id).remove();
+Materialize.toast("Categoria eliminada", 4000, 'green rounded');
