@@ -1,0 +1,15 @@
+<%= form_for @category, remote: true do |f|  %>
+<div class="modal-content">
+  <h4><%= t("actions.#{params[:action]}", model: @category.class.model_name.human) %></h4>
+  <div class="input-field">
+    <%= f.text_field :name, class: 'validate', autocomplete: 'off' %>
+    <%= f.label :name, id: "category_label_name" %>
+  </div>
+</div>
+<div class="modal-footer">
+  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+    <%= t('general.cancel') %>
+  </a>
+  <%= f.submit t("general.#{params[:action]}"), class: 'modal-action waves-effect waves-green btn-flat' %>
+</div>
+<% end %>
