@@ -11,16 +11,12 @@ module ApplicationHelper
         icon: 'bookmark'
       },
       {
-        model: Expense,
-        icon: 'money_off'
-      },
-      {
-        model: Group,
-        icon: 'group'
-      },
-      {
         model: Salary,
         icon: 'attach_money'
+      },
+      {
+        model: Expense,
+        icon: 'money_off'
       },
       {
         model: Summary,
