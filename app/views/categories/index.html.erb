@@ -1,6 +1,6 @@
 <div class="row" id="category-index">
   <% @categories.each do |cat| %>
-    <div class="col m6 l6 xl6">
+    <div class="col m6 l6 xl6" id="<%= "category-#{cat.id}" %>">
       <%= render cat %>
     </div>
   <% end %>
