@@ -1,7 +1,7 @@
 <h1>Hola <em><%= @user.full_name %></em> </h1>
 
 <p>Te enviamos este correo para avisarte que tienes un nuevo gasto que sale del comun de tus gastos: </p>
-<table>
+<table class="bordered">
   <tr>
     <th>Nombre</th>
     <td><%= @expense.name %></td>
@@ -19,3 +19,5 @@
     <td><%= @expense.amount %></td>
   </tr>
 </table>
+
+<button class="btn" type="button">Gracias</button>

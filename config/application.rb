@@ -26,5 +26,9 @@ module Finandroid
     config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.available_locales = [:es, :en, :br, :mp]
     config.i18n.default_locale = :es
+
+    config.to_prepare do
+      Devise::Mailer.layout "mailer"
+    end
   end
 end
