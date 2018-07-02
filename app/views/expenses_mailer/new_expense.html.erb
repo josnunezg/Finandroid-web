@@ -1,0 +1,21 @@
+<h1>Hola <em><%= @user.full_name %></em> </h1>
+
+<p>Te enviamos este correo para avisarte que tienes un nuevo gasto que sale del comun de tus gastos: </p>
+<table>
+  <tr>
+    <th>Nombre</th>
+    <td><%= @expense.name %></td>
+  </tr>
+  <tr>
+    <th>Descripcion</th>
+    <td><%= @expense.description %></td>
+  </tr>
+  <tr>
+    <th>Cuenta</th>
+    <td><%= @expense.bank_account.name %></td>
+  </tr>
+  <tr>
+    <th>Monto</th>
+    <td><%= @expense.amount %></td>
+  </tr>
+</table>

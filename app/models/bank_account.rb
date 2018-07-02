@@ -20,4 +20,18 @@ class BankAccount < ActiveRecord::Base
   def total_expenses sd, ed
     self.expenses.where(created_at: [sd..ed]).pluck(:amount).reduce(:+) || 0
   end
+
+  def expenses_average
+    expenses.sum(:amount) / expenses.count
+  end
+
+  def expenses_standard_deviation
+    average = expenses_average
+    count = expenses.count
+    return unless count > 1
+    sum = expenses.pluck(:amount) { |amount| (amount - average)**2 }.reduce(:+)
+    deviation = sum / (count - 1)
+    deviation **= 0.5
+    deviation
+  end
 end

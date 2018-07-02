@@ -11,8 +11,13 @@ class User < ActiveRecord::Base
   has_many :expenses, :through => :bank_accounts
   has_many :summaries
 
+  before_save :assign_uuid, if: Proc.new{ |u| u.uuid.blank? }
   # Muestra el nombre completo
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def assign_uuid
+    self.uuid = SecureRandom.uuid.gsub("-","")
   end
 end

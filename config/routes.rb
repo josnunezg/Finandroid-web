@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :salaries
     resources :profiles, only: [:show, :edit]
 
+    namespace :api do
+      resources :bank_accounts
+      get :login, to: 'application#login'
+    end
+
     root 'summaries#index'
 
   end

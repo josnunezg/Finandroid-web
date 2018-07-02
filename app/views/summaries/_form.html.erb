@@ -4,19 +4,19 @@
     <div class="row">
       <div class="input-field col s12">
         <%= f.text_field :name, class: 'validate', autocomplete: 'off' %>
-        <%= f.label :name %>
+        <%= f.label :name, id: "input" %>
       </div>
       <div class="input-field col s12">
         <%= f.select :trackable, trackable_list, prompt: "" %>
         <%= f.label :trackable %>
       </div>
       <div class="input-field col s12">
-        <%= f.text_field :start_date, class: 'datepicker' %>
-        <%= f.label :start_date %>
+        <%= f.text_field :start_date, class: 'datepicker', value: @summary.start_date.try(:to_date) %>
+        <%= f.label :start_date, id: "input" %>
       </div>
       <div class="input-field col s12">
-        <%= f.text_field :end_date, class: 'datepicker' %>
-        <%= f.label :end_date %>
+        <%= f.text_field :end_date, class: 'datepicker', value: @summary.end_date.try(:to_date) %>
+        <%= f.label :end_date, id: "input" %>
       </div>
     </div>
   </div>
