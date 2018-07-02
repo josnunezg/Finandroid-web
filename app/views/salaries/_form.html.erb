@@ -11,7 +11,7 @@
       </tr>
       <tr>
         <th><%= Salary.human_attribute_name(:bank_account_id) %></th>
-        <td><%= f.select :bank_account_id, bank_accounts_for_form %></td>
+        <td><%= f.select :bank_account_id, bank_accounts_for_form, prompt: Salary.human_attribute_name(:bank_account_id) %></td>
       </tr>
       <tr>
         <th><%= Salary.human_attribute_name(:amount) %></th>

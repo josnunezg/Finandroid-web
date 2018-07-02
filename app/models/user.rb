@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :bank_accounts
   has_many :salaries, :through => :bank_accounts
   has_many :expenses, :through => :bank_accounts
+  has_many :summaries
 
   # Muestra el nombre completo
   def full_name

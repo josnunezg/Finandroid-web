@@ -1,0 +1,10 @@
+<% if @summary.errors.full_messages.any? %>
+  <% @summary.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 3000, "red rounded");
+  <% end %>
+<% else %>
+  $("#modal-summary").modal('close');
+  $("#summaries-index").append("<%= j render(partial: @summary) %>")
+  $('.modal').modal();
+  Materialize.toast("Resumen creado", 3000, "green rounded");
+<% end %>

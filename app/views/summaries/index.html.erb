@@ -1,0 +1,9 @@
+<div class="row" id="summaries-index">
+  <% @summaries.each do |sum| %>
+    <div class="col s12" id="summary-<%= sum.id %>">
+      <%= render sum %>
+    </div>
+  <% end %>
+</div>
+<div class="modal modal-fixed-footer" id="modal-summary">
+</div>

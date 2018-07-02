@@ -6,7 +6,7 @@ module ExpensesHelper
 
   def categories_for_form
     Category.where(user_id: [current_user.id, nil])
-            .order(:name).collect { |c| [c.name, c.id]}
+            .order(:default).collect { |c| c.default ? [t("categories.#{c.name}"),c.id] : [c.name, c.id]}
   end
 
 end

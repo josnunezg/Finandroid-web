@@ -12,4 +12,12 @@ class BankAccount < ActiveRecord::Base
   def processed_balance
     self.balance.to_s.reverse.scan(/.{1,3}/).join('.').reverse
   end
+
+  def total_salaries sd, ed
+    self.salaries.where(created_at: [sd..ed]).pluck(:amount).reduce(:+) || 0
+  end
+
+  def total_expenses sd, ed
+    self.expenses.where(created_at: [sd..ed]).pluck(:amount).reduce(:+) || 0
+  end
 end

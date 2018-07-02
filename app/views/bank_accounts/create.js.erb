@@ -4,8 +4,8 @@
   <% end %>
 <% else %>
   $('#form-bank_account').modal('close');
-  $('#form-bank_account').html("");
   var id = "<%= @bank_account.id %>"
   $('#index-bank_account').append("<div class='col s6' id='bank_account-"+ id +"' ><%= j render(partial: @bank_account) %></div>");
+  $('.modal').modal();
   Materialize.toast("Cuenta creada", 4000, 'green rounded')
 <% end %>

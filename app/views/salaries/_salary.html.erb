@@ -21,4 +21,7 @@
 <div class="modal-footer">
   <%= link_to t('actions.edit', model: ''), edit_salary_path(@salary), class: 'modal-action waves-effect waves-green btn-flat', remote: true %>
   <%= link_to t('general.delete'), salary_path(@salary), method: :delete, class: 'modal-action waves-effect waves-green btn-flat', remote: true %>
+  <a class="modal-action modal-close waves-effect waves-green btn-flat">
+    <%= t('general.close') %>
+  </a>
 </div>

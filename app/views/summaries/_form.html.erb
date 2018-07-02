@@ -1,0 +1,29 @@
+<%= form_for @summary, remote: true do |f| %>
+  <div class="modal-content">
+    <h4><%= t("actions.#{params[:action]}", model: @summary.class.model_name.human) %></h4>
+    <div class="row">
+      <div class="input-field col s12">
+        <%= f.text_field :name, class: 'validate', autocomplete: 'off' %>
+        <%= f.label :name %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.select :trackable, trackable_list, prompt: "" %>
+        <%= f.label :trackable %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.text_field :start_date, class: 'datepicker' %>
+        <%= f.label :start_date %>
+      </div>
+      <div class="input-field col s12">
+        <%= f.text_field :end_date, class: 'datepicker' %>
+        <%= f.label :end_date %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">
+      <%= t('general.cancel') %>
+    </a>
+    <%= f.submit t("general.#{params[:action]}"), class: 'modal-action waves-effect waves-green btn-flat' %>
+  </div>
+<% end %>

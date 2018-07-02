@@ -18,6 +18,7 @@ class Ability
     can :manage, Expense, :bank_account => { :user_id => user.id }
     can :manage, Salary, :bank_account => { :user_id => user.id }
     can :manage, User, :id => user.id
+    can :manage, Summary, :user_id => user.id
     can :read, User, User.all do |usr|
       usr.group.user_ids.includes(user.id)
     end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
-    resources :summaries
+    resources :summaries, except: [:show]
     resources :bank_accounts
     resources :categories
     resources :expenses

@@ -1,0 +1,3 @@
+$("#delete-confirm-<%= @summary.id %>").modal('close');
+$("#summary-<%= @summary.id %>").remove();
+Materialize.toast("Resumen eliminado", 3000, "green rounded");

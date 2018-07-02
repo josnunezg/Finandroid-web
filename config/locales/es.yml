@@ -42,6 +42,11 @@ es:
         description: Descripción
         bank_account_id: Cuenta
         amount: Monto
+      summary:
+        name: Nombre
+        start_date: Desde
+        end_date: Hasta
+        trackable: A base de
       user:
         first_name: Nombre
         last_name: Apellido
@@ -49,6 +54,7 @@ es:
         password: Contraseña
         password_confirmation: Confirma contraseña
         username: Usuario
+        remember_me: Mantener sesión iniciada
     errors:
       models:
         bank_account:
@@ -75,8 +81,9 @@ es:
     edit: Actualizar
     cancel: Cancelar
     delete: Eliminar
-    yes: Sí
+    yes: Si
     no: No
+    close: Cerrar
   categories:
     home: Casa
     purchases: Compras
