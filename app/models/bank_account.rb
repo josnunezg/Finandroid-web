@@ -29,7 +29,7 @@ class BankAccount < ActiveRecord::Base
     average = expenses_average
     count = expenses.count
     return unless count > 1
-    sum = expenses.pluck(:amount) { |amount| (amount - average)**2 }.reduce(:+)
+    sum = expenses.pluck(:amount).map { |amount| (amount - average)**2 }.reduce(:+)
     deviation = sum / (count - 1)
     deviation **= 0.5
     deviation
