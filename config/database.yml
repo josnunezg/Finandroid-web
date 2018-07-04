@@ -50,5 +50,5 @@ test:
 production:
   <<: *default
   database: finandroid_production
-  username: finandroid
+  username: <%= ENV['FINANDROID_DATABASE_USER'] %>
   password: <%= ENV['FINANDROID_DATABASE_PASSWORD'] %>

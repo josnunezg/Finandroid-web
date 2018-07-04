@@ -1,5 +1,7 @@
-<p>Welcome <%= @email %>!</p>
+<div class="container">
+  <p>Bienvenido  <strong><%= @email %></strong>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+  <p>Puedes confirmar tu cuenta haciend click en el siguiente boton:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class:  'btn' %></p>
+</div>

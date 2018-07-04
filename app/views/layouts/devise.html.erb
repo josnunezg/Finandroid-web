@@ -23,14 +23,31 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="cyan">
-    <div class="section center">
-      <%= image_tag('psyduck', width: 200, class: 'center-align') %>
-    </div>
-    <div class="container">
-      <div class="row">
-        <%= yield %>
+    <main>
+      <div class="section center">
+        <%= image_tag('psyduck', width: 200, class: 'center-align') %>
       </div>
-    </div>
+      <div class="container">
+        <div class="row">
+          <%= yield %>
+        </div>
+      </div>
+    </main>
+    <footer class="page-footer cyan darken-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Finandroid</h5>
+                <p class="grey-text text-lighten-4">No te quedes pato y usa nuestra aplicación</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2018 Copyright
+            </div>
+          </div>
+        </footer>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
 </html>

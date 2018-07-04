@@ -1,0 +1,23 @@
+$("#modal-group").html("<%= j render(partial: 'form') %>");
+var data = {}
+<% User.to_groups(current_user.id).each do |user| %>
+data['<%= user.username %>'] = null;
+<% end %>
+$("#modal-group").modal('open');
+$('.chips-autocomplete').material_chip({
+  autoCompleteOptions: {
+    data: data,
+    limit: Infinity,
+    minLength: 1
+  }
+});
+
+function addUsers(e) {
+  e.preventDefault();
+  var data_chip = $('.chips').material_chip('data');
+  var data = data_chip.map(function(d) { return d.tag }).join(",");
+  $("#users_to_invite").val(data);
+  console.log("EVENT", e);
+  console.log("DATA", data);
+  $("#new_group").submit();
+}

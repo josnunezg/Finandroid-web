@@ -1,0 +1,8 @@
+<h1>Hola <em><%= @user.full_name %></em> </h1>
+<div class="container">
+  <p>
+    <strong><%= @host.full_name %></strong> te ha invitado a su grupo <%= @group.name %>,
+    si quieres haceptar solo haz clic en el boton
+  </p>
+  <%= link_to "Aceptar!", accept_invitation_group_url(@group, user_id: @user.id), target: '_blank', class: 'btn' %>
+</div>

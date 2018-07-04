@@ -10,7 +10,7 @@
   </thead>
   <tbody id="body-table-expenses">
     <% @expenses.each do |exp| %>
-      <tr onclick="showExpense(<%= exp.id %>);" id="<%= "expense-#{exp.id}-tr" %>">
+      <tr onclick="showExpense(<%= exp.id %>);" id="<%= "expense-#{exp.id}-tr" %>" style="cursor: pointer !important;">
         <td><%= exp.name %></td>
         <td><%= exp.description.truncate(20) %></td>
         <td><%= exp.bank_account.try(:name) %></td>

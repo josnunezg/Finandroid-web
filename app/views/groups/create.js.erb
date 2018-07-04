@@ -1,0 +1,7 @@
+<% if @group.errors.full_messages.any? %>
+  <% @group.errors.full_messages.each do |msg| %>
+    Materialize.toast("<%= msg %>", 3000, "red rounded")
+  <% end %>
+<% else %>
+  window.location.reload();
+<% end %>

@@ -1,0 +1,23 @@
+<%= form_for @group, remote: true do |f| %>
+  <div class="modal-content">
+    <h4><%= t("actions.#{params[:action]}", model: Group.model_name.human) %></h4>
+    <div class="container">
+      <div class="row">
+        <div class="input-field">
+          <%= f.text_field :name, class: 'validate' %>
+          <%= f.label :name %>
+        </div>
+        <div class="input-field">
+          <div class="chips chips-autocomplete"></div>
+        </div>
+        <%= hidden_field_tag :users_to_invite %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">
+      <%= t('general.cancel') %>
+    </a>
+    <%= f.submit t("general.#{params[:action]}"), class: 'modal-action waves-effect waves-green btn-flat', onclick: "addUsers(event)" %>
+  </div>
+<% end %>

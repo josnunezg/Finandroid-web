@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resources :bank_accounts
     resources :categories
     resources :expenses
-    resources :groups, except: [:index]
+    resources :groups, except: [:index] do
+      member do
+        get :accept_invitation
+      end
+    end
     resources :salaries
     resources :profiles, only: [:show, :edit]
 
