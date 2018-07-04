@@ -31,9 +31,9 @@
         <li>
           <div class="user-view">
             <div class="background cyan lighten-2">
-              <%= image_tag("psyduck.png", style: "opacity: .2;") %>
+              <%= image_tag(asset_url("psyduck.png"), style: "opacity: .2;") %>
             </div>
-            <%= image_tag("psyduck.png", class: "circle") %>
+            <%= image_tag(asset_url("psyduck.png"), class: "circle") %>
             <a class="dropdown-button" data-activates='dropdown1' style="cursor: pointer;">
               <span class="white-text name">
                 <%= current_user.full_name %>
