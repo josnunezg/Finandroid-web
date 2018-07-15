@@ -1,0 +1,7 @@
+<% if @summary.share %>
+  Materialize.toast("Resumen compartido", 3000, "green rounded");
+  $("#summary_share-<%= @summary.id %>").removeClass("grey").addClass("cyan");
+<% else %>
+  Materialize.toast("Dejaste de compartir el resumen", 3000, "blue rounded");
+  $("#summary_share-<%= @summary.id %>").removeClass("cyan").addClass("grey");
+<% end %>

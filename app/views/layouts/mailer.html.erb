@@ -1,9 +1,56 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <style media="screen">
+      body {
+        display: flex;
+        min-height: 100vh;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1 0 auto;
+        margin-top: 5em;
+      }
+    </style>
   </head>
-  <body>
-    <%= yield %>
+  <body class="cyan">
+    <header>
+      <nav>
+        <div class="nav-wrapper cyan">
+          <%= link_to "Finandroid", root_url, target: "_blank", class: "brand-logo center" %>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container">
+        <div class="col m12 l6 xl6 offset-xl3 offset-l3">
+          <div class="card z-depth-4">
+            <div class="card-content">
+              <div class="container">
+                <%= yield %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="page-footer cyan darken-1">
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Finandroid</h5>
+            <p class="grey-text text-lighten-4">No te quedes pato y usa nuestra aplicación</p>
+            <p class="grey-text text-lighten-4">NO RESPONDAS ESTE EMAIL, ES ENVIADO AUTOMATICAMENTE</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2018 Copyright
+        </div>
+      </div>
+    </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   </body>
 </html>

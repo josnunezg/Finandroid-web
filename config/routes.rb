@@ -8,13 +8,19 @@ Rails.application.routes.draw do
       sessions: 'users/sessions'
     }
 
-    resources :summaries, except: [:show]
+    resources :summaries, except: [:show] do
+      member do
+        put :share
+      end
+    end
     resources :bank_accounts
     resources :categories
     resources :expenses
     resources :groups, except: [:index] do
       member do
         get :accept_invitation
+        get :invite_users
+        put :send_invitation
       end
     end
     resources :salaries

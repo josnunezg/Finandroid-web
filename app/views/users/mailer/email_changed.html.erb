@@ -1,7 +1,8 @@
-<p>Hello <%= @email %>!</p>
-
-<% if @resource.try(:unconfirmed_email?) %>
-  <p>We're contacting you to notify you that your email is being changed to <%= @resource.unconfirmed_email %>.</p>
-<% else %>
-  <p>We're contacting you to notify you that your email has been changed to <%= @resource.email %>.</p>
-<% end %>
+<span class="card-title">Hola <%= @email %>!</span>
+<div class="container">
+  <% if @resource.try(:unconfirmed_email?) %>
+    <p>Te escribimos para comunicarte que tu correo se esta cambiando a <%= @resource.unconfirmed_email %>.</p>
+  <% else %>
+    <p>Te escribirmos para comunicarte que tu correo se ha cambiado al <%= @resource.email %>.</p>
+  <% end %>
+</div>

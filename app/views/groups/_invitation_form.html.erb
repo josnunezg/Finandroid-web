@@ -1,0 +1,20 @@
+<%= form_tag send_invitation_group_path(@group), method: :put, remote: true, id: "invite_users_form" do |f| %>
+  <div class="modal-content">
+    <h4> Formulario de invitación </h4>
+    <div class="container">
+      <div class="row">
+        <div class="input-field">
+          <div class="chips chips-autocomplete"></div>
+          <label for="">Nombres de usuario</label>
+        </div>
+        <%= hidden_field_tag :users_to_invite %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">
+      <%= t('general.cancel') %>
+    </a>
+    <%= submit_tag t("general.#{params[:action]}"), class: 'modal-action waves-effect waves-green btn-flat', onclick: "addUsers(event)" %>
+  </div>
+<% end %>

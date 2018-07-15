@@ -19,6 +19,9 @@ class Ability
     can :manage, Salary, :bank_account => { :user_id => user.id }
     can :manage, User, :id => user.id
     can :manage, Summary, :user_id => user.id
+    if user.group_id
+      cannot :create, Group
+    end
     can :read, User, User.all do |usr|
       usr.group.user_ids.includes(user.id)
     end

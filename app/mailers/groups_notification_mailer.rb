@@ -13,4 +13,10 @@ class GroupsNotificationMailer < ApplicationMailer
     mail to: @user.email, subject: 'Invitación a grupo' if @user && @group
   end
 
+  def accept_invitation(user, group)
+    @user = user
+    @group = group
+    mail to: @user.email, subject: "Bienvenido al group #{@group.name}" if @user && @group
+  end
+
 end

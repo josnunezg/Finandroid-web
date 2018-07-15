@@ -1,0 +1,10 @@
+<% users = @group.users %>
+<% summaries = Summary.where(share: true, user_id: users.ids) %>
+
+<div class="row" id="summaries-index">
+  <% summaries.each do |sum| %>
+    <div class="col m12 l12 xl12">
+      <%= render 'summaries/summary', summary: sum, name_title: sum.user.full_name %>
+    </div>
+  <% end %>
+</div>

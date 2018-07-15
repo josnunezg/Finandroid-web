@@ -1,7 +1,6 @@
+<span class="card-title">Bienvenido  <strong><%= @email %></strong>!</span>
 <div class="container">
-  <p>Bienvenido  <strong><%= @email %></strong>!</p>
-
   <p>Puedes confirmar tu cuenta haciend click en el siguiente boton:</p>
 
-  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class:  'btn' %></p>
+  <p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token), class:  'btn cyan' %></p>
 </div>

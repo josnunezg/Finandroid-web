@@ -1,15 +1,29 @@
-<nav class="grey lighten-3 nav-extended z-depth-0">
+<nav class="nav-extended white z-depth-2">
   <div class="container">
     <div class="nav-wrapper">
-      <a class="brand-logo center grey-text"><%= model.model_name.human(count: 2) %></a>
       <a data-activates="mobile-demo" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right">
-        <li>
-          <%= link_to [:new, model.to_s.underscore], class: "btn waves-effect waves-light", remote: true do %>
-            <%= material_icon.add %>
-          <% end %>
-        </li>
-      </ul>
+      <% if model == Group %>
+        <% group = current_user.group %>
+        <a class="brand-logo center grey-text"><%= group.name %></a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <% if can? :update, group %>
+              <%= link_to invite_users_group_path(group), class: "btn waves-effect waves-light", remote: true do %>
+                <%= material_icon.person_add %>
+              <% end %>
+            <% end %>
+          </li>
+        </ul>
+      <% else %>
+        <a class="brand-logo center grey-text"><%= model.model_name.human(count: 2) %></a>
+        <ul id="nav-mobile" class="right">
+          <li>
+            <%= link_to [:new, model.to_s.underscore], class: "btn waves-effect waves-light", remote: true do %>
+              <%= material_icon.add %>
+            <% end %>
+          </li>
+        </ul>
+      <% end %>
     </div>
   </div>
 </nav>

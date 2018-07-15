@@ -1,7 +1,15 @@
+<% name_title ||= "" %>
 <div class="card hoverable">
-  <div class="card-content">
+  <div class="card-content" style="position: relative;">
+    <% if can? :update, summary %>
+      <%= form_tag share_summary_path(summary), method: :put, style: "position: absolute; top: 1em; right: 1em", remote: true do %>
+        <%= button_tag class: "btn btn-floating #{summary.share ? 'cyan' : 'grey'}", type: "submit", id: "summary_share-#{summary.id}" do %>
+          <%= material_icon.share %>
+        <% end %>
+      <% end %>
+    <% end %>
     <span class="card-title"><%= summary.name %></span>
-    <%= column_chart summary.data, adapter: "google" %>
+    <%= column_chart summary.data, adapter: "google", library: {title: name_title} %>
   </div>
   <% if can? :manage, summary %>
     <div class="card-action">
@@ -11,20 +19,22 @@
   <% end %>
 </div>
 
-<div id="delete-confirm-<%= summary.id %>" class="modal bottom-sheet">
-  <div class="modal-content">
-    <h2 class="center">¿Estas seguro?</h2>
-    <div class="container center">
-      <div class="row">
-        <div class="col s6 center">
-          <%= link_to t('general.yes'), summary_path(summary), method: :delete, remote: true, class: 'btn red btn-block' %>
-        </div>
-        <div class="col s6 center">
-          <a class="modal-action modal-close waves-effect waves-green btn btn-block white black-text">
-            <%= t('general.no') %>
-          </a>
+<% if can? :manage, summary %>
+  <div id="delete-confirm-<%= summary.id %>" class="modal bottom-sheet">
+    <div class="modal-content">
+      <h2 class="center">¿Estas seguro?</h2>
+      <div class="container center">
+        <div class="row">
+          <div class="col s6 center">
+            <%= link_to t('general.yes'), summary_path(summary), method: :delete, remote: true, class: 'btn red btn-block' %>
+          </div>
+          <div class="col s6 center">
+            <a class="modal-action modal-close waves-effect waves-green btn btn-block white black-text">
+              <%= t('general.no') %>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

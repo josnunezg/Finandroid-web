@@ -1,6 +1,6 @@
 class SummariesController < ApplicationController
 
-  before_action :set_summary, only: [:edit, :update, :destroy]
+  before_action :set_summary, only: [:edit, :update, :destroy, :share]
   before_action :authorize_resource
   before_action :prepare_params, only: [:create, :update]
 
@@ -39,6 +39,13 @@ class SummariesController < ApplicationController
   def destroy
     respond_to do |format|
       @summary.destroy
+      format.js
+    end
+  end
+
+  def share
+    respond_to do |format|
+      @summary.update(share: !@summary.share)
       format.js
     end
   end

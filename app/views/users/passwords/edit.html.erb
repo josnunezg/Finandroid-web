@@ -1,25 +1,28 @@
-<h2>Change your password</h2>
+<div class="col s6 offset-s3">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <div class="card sticky-action z-depth-4">
+      <div class="card-content">
+        <span class="card-title">Cambiar contraseña</span>
+        <%= devise_error_messages! %>
+        <%= f.hidden_field :reset_password_token %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-  <%= f.hidden_field :reset_password_token %>
+        <div class="input-field">
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: "#{@minimum_password_length} caracteres minimo", class: "validate" %>
+          <%= f.label :password, "Nueva contraseña" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
-  </div>
+        <div class="input-field">
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "#{@minimum_password_length} caracteres minimo", class: "validate" %>
+          <%= f.label :password_confirmation, "Confirma tu nueva contraseña" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+        <%= f.submit "Cambiar contraseña", class: "btn btn-block btn-large", style: "margin-top: 2em" %>
+        <div class="actions">
+        </div>
+      </div>
+      <div class="card-action">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
+  <% end %>
+</div>

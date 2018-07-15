@@ -26,12 +26,12 @@
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body class="grey lighten-4">
     <header>
-      <ul id="mobile-demo" class="side-nav fixed z-depth-0">
+      <ul id="mobile-demo" class="side-nav fixed z-depth-0 cyan lighten-4">
         <li>
           <div class="user-view">
-            <div class="background cyan lighten-2">
+            <div class="background cyan lighten-4">
               <%= image_tag(asset_url("psyduck.png"), style: "opacity: .2;") %>
             </div>
             <%= image_tag(asset_url("psyduck.png"), class: "circle") %>
@@ -86,6 +86,10 @@
       <%= render 'partials/sidebar', model: params[:controller].singularize.camelize.constantize %>
     </header>
     <main>
+      <% flash.each do |message_type, message| %>
+        <% type = message_type.gsub('alert', 'red').gsub('notice', 'green') %>
+        <%= javascript_tag "Materialize.toast('#{message}', 4000, '#{type} rounded');" %>
+      <% end %>
       <div class="container">
         <div class="row">
           <div class="col m12 l12 xl12">

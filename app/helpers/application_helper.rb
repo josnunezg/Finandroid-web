@@ -27,7 +27,7 @@ module ApplicationHelper
 
   def active? model
     controller = model.to_s.underscore.pluralize
-    return "cyan lighten-4" if controller == params[:controller]
+    return "cyan lighten-2" if controller == params[:controller]
     ""
   end
 

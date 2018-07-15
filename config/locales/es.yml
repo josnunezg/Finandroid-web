@@ -84,6 +84,7 @@ es:
     yes: Si
     no: No
     close: Cerrar
+    invite_users: Invitar
   categories:
     home: Casa
     purchases: Compras

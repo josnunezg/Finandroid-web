@@ -21,6 +21,7 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="google-site-verification" content="N3PgcJtSu6lbwV1lsCu-SVbwza5bgH7mRoDEgXHDHEA" />
     <%= stylesheet_link_tag    'devise', media: 'all' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body class="cyan">
@@ -29,26 +30,29 @@
         <%= image_tag(asset_url("psyduck.png"), width: 200, class: 'center-align') %>
       </div>
       <div class="container">
+        <% flash.each do |message_type, message| %>
+          <% type = message_type.gsub('alert', 'red').gsub('notice', 'green') %>
+          <%= javascript_tag "Materialize.toast('#{message}', 4000, '#{type} rounded');" %>
+        <% end %>
         <div class="row">
           <%= yield %>
         </div>
       </div>
     </main>
     <footer class="page-footer cyan darken-1">
-          <div class="container">
-            <div class="row">
-              <div class="col l6 s12">
-                <h5 class="white-text">Finandroid</h5>
-                <p class="grey-text text-lighten-4">No te quedes pato y usa nuestra aplicación</p>
-              </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Finandroid</h5>
+            <p class="grey-text text-lighten-4">No te quedes pato y usa nuestra aplicación</p>
           </div>
-          <div class="footer-copyright">
-            <div class="container">
-            © 2018 Copyright
-            </div>
-          </div>
-        </footer>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        </div>
+      </div>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2018 Copyright
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

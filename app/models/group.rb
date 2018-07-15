@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :users
   before_save :add_user_owner_to_group
   after_create :notification_create
+  before_destroy :group_null
 
 
   def host_user
@@ -20,5 +21,12 @@ class Group < ActiveRecord::Base
   def invite_to_user username
     user = User.find_by_username(username)
     GroupsNotificationWorker.perform_async('invite_to_group', user.id, self.id) if user
+  end
+
+  def group_null
+    self.users.each do |u|
+      u.group = nil
+      u.save
+    end
   end
 end
