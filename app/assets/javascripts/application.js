@@ -17,6 +17,21 @@
 //= require_tree .
 
 $(document).ready(function() {
-  $(".button-collapse").sideNav();
+  $(".button-collapse").sideNav({
+    menuWidth: 260
+  });
   $(".modal").modal();
+  $("#btn-notifications").on('click', function() {
+    $("#count-notifications").remove();
+  })
 })
+
+function buttonHoverable(button) {
+  var id = button.id;
+  $("#"+id).toggleClass('pulse');
+}
+
+function removeNotification(notification) {
+  var id = notification.id;
+  $("#"+id).remove();
+}
