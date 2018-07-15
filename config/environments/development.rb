@@ -38,15 +38,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
-  config.action_mailer.smtp_settings = {
-   :address              => "smtp.sendgrid.net",
-   :port                 => 587,
-   :domain               => 'localhost:3000',
-   :user_name            => "josnunezg",
-   :password             => "j0snunG.123",
-   :authentication       => "plain",
-   :enable_starttls_auto => true
-  }
+  config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
   # Raises error for missing translations

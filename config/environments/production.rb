@@ -43,8 +43,8 @@ Rails.application.configure do
    :address              => "smtp.sendgrid.net",
    :port                 => 587,
    :domain               => 'finandroid.cl',
-   :user_name            => ENV['EMAIL_USERNAME'],
-   :password             => ENV['EMAIL_PASSWORD'],
+   :user_name            => ENV['SENDGRID_USER'],
+   :password             => ENV['SENDGRID_PASSWORD'],
    :authentication       => :plain,
    :enable_starttls_auto => true
   }
