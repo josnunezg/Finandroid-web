@@ -35,7 +35,7 @@ Rails.application.configure do
   # yet still be able to expire them through the digest params.
   config.assets.digest = true
 
-  config.action_mailer.default_url_options = { host: "www.finandroid.cl" }
+  config.action_mailer.default_url_options = { host: "finandroid.cl" }
 
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
@@ -45,7 +45,7 @@ Rails.application.configure do
    :domain               => 'finandroid.cl',
    :user_name            => ENV['EMAIL_USERNAME'],
    :password             => ENV['EMAIL_PASSWORD'],
-   :authentication       => "plain",
+   :authentication       => :plain,
    :enable_starttls_auto => true
   }
 
