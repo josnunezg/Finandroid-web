@@ -28,69 +28,28 @@
   </head>
   <body class="grey lighten-4">
     <header>
-      <ul id="mobile-demo" class="side-nav fixed z-depth-0 cyan lighten-4">
+      <ul id="mobile-demo" class="side-nav fixed z-depth-3 cyan darken-2">
         <li>
-          <div class="user-view">
-            <div class="background cyan lighten-4">
-              <%= image_tag(asset_url("psyduck.png"), style: "opacity: .2;") %>
-            </div>
-            <%= image_tag(asset_url("psyduck.png"), class: "circle") %>
-            <a class="dropdown-button" data-activates='dropdown1' style="cursor: pointer;">
-              <span class="white-text name">
-                <%= current_user.full_name %>
-                <i class="material-icons right">arrow_drop_down</i>
-              </span>
-            </a>
-            <ul id='dropdown1' class='dropdown-content'>
-              <li>
-                  <%= link_to profile_path(current_user) do %>
-                    Perfil
-                    <%= material_icon.person %>
-                  <% end %>
-              </li>
-              <% if current_user.group %>
-                <li>
-                    <%= link_to group_path(current_user.group) do %>
-                      Mi grupo
-                      <%= material_icon.group %>
-                    <% end %>
-                </li>
-              <% else %>
-              <li>
-                  <%= link_to new_group_path, remote: true do %>
-                    Crear grupo
-                    <%= material_icon.add %>
-                  <% end %>
-              </li>
-              <% end %>
-              <li class="divider"></li>
-              <li>
-                  <%= link_to destroy_user_session_path, method: :delete do %>
-                    Cerrar sesión
-                    <%= material_icon.exit_to_app %>
-                  <% end %>
-              </li>
-            </ul>
-            <a href=""><span class="white-text email"><%= current_user.email %></span></a>
-          </div>
+          <h4 class="center white-text">Finandroid</h4>
         </li>
+        <div style="padding: 0px 10px 0px 10px">
+          <li class="divider white"></li>
+        </div>
+        <div style="padding: 10px 10px 0px 10px">
           <% items_sidebar.each do |item| %>
             <li>
-              <%= link_to item[:model], class: "#{active?(item[:model])} waves-effect" do %>
-                <%= material_icon.send(item[:icon]) %>
+              <%= link_to item[:model], class: "#{active?(item[:model])} waves-effect", style: "border-radius: 10px" do %>
+                <%= material_icon.send(item[:icon]).css_class(active_icon?(item[:model])) %>
                 <%= item[:model].model_name.human(count: 2) %>
               <% end %>
             </li>
           <% end %>
+        </div>
       </ul>
       <%= render 'partials/sidebar', model: params[:controller].singularize.camelize.constantize %>
     </header>
     <main>
-      <% flash.each do |message_type, message| %>
-        <% type = message_type.gsub('alert', 'red').gsub('notice', 'green') %>
-        <%= javascript_tag "Materialize.toast('#{message}', 4000, '#{type} rounded');" %>
-      <% end %>
-      <div class="container">
+      <div>
         <div class="row">
           <div class="col m12 l12 xl12">
             <%= yield %>
