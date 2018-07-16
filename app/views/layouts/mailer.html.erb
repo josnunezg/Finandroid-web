@@ -1,43 +1,61 @@
 <html>
   <head>
-    <%= render 'partials/mailer_css' %>
+
+    <style>
+      .container {
+        padding: 2em;
+        background-color: #ffffff;
+        max-width: 50%;
+        max-height: 50%;
+        margin: 10em 10em 10em 17em;
+        box-shadow: 5px 5px 15px #444;
+      }
+
+      .btn {
+        border: 2px solid;
+        padding: 1em;
+        text-decoration: none;
+        border-color: #00bcd4;
+        box-shadow: 2px 2px 10px #444;
+        border-radius: 10px;
+        color: #ffff;
+        background-color: #00bcd4;
+        text-transform: uppercase;
+        font-size: 0.8em;
+      }
+
+      a:hover .btn {
+        box-shadow: 5px 5px 15px #444;
+      }
+
+      p {
+        font-size: 1.2em;
+        text-align: center;
+      }
+
+      h2 {
+        text-align: center;
+      }
+      .title {
+        color: white;
+        border-bottom: 2px;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        margin-bottom: 100px;
+        width: 100%;
+        box-shadow: 0 5px 10px #444;
+        font-size: 1.2em;
+      }
+    </style>
   </head>
-  <body class="cyan">
-    <header>
-      <nav>
-        <div class="nav-wrapper cyan">
-          <%= link_to "Finandroid", root_url, target: "_blank", class: "brand-logo center" %>
-        </div>
+  <body style="background-color: #00bcd4">
+      <nav class="title">
+        <h1>Finandroid</h1>
       </nav>
-    </header>
-    <main>
       <div class="container">
-        <div class="col m12 l6 xl6 offset-xl3 offset-l3">
-          <div class="card z-depth-4">
-            <div class="card-content">
-              <div class="container">
-                <%= yield %>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= yield %>
       </div>
-    </main>
-    <footer class="page-footer cyan darken-1">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">Finandroid</h5>
-            <p class="grey-text text-lighten-4">No te quedes pato y usa nuestra aplicación</p>
-            <p class="grey-text text-lighten-4">NO RESPONDAS ESTE EMAIL, ES ENVIADO AUTOMATICAMENTE</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2018 Copyright
-        </div>
-      </div>
-    </footer>
   </body>
 </html>
