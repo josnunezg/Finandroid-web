@@ -40,13 +40,13 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.sendgrid.net",
-   :port                 => 587,
-   :domain               => 'finandroid.cl',
-   :user_name            => ENV['SENDGRID_USER'],
-   :password             => ENV['SENDGRID_PASSWORD'],
-   :authentication       => :plain,
-   :enable_starttls_auto => true
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => "finandroid.cl",
+    :user_name            => ENV['GMAIL_USERNAME'],
+    :password             => ENV['GMAIL_PASSWORD'],
+    :authentication       => 'plain',
+    :enable_starttls_auto => true
   }
 
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
