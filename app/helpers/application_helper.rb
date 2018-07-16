@@ -31,7 +31,8 @@ module ApplicationHelper
       category: "bookmark",
       salary: "attach_money",
       expense: "money_off",
-      summary: "assessment"
+      summary: "assessment",
+      group: "group"
     }[model.to_s.underscore.to_sym]
   end
 

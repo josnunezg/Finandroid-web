@@ -41,8 +41,7 @@ class Expense < ActiveRecord::Base
     deviation = bank_account.expenses_standard_deviation
     average = bank_account.expenses_average
     up = average + deviation.to_i
-    down = average - deviation.to_i
-    deviation && !amount.between?(down,up)
+    deviation && amount > up
   end
 
   def send_notification

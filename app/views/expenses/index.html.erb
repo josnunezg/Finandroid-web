@@ -1,4 +1,4 @@
-<div class="card large hoverable">
+<div class="card-panel large hoverable" style= "height: 30rem; max-height: 30rem">
   <div class="">
     <table class="highlight bordered centered">
       <thead class="">
@@ -27,4 +27,8 @@
 </div>
 
 <div class="modal modal-fixed-footer" id="modal-expense">
+</div>
+
+<div class="card-panel center card-balance hoverable z-depth-4">
+  <h5>$<%= @expenses.sum(:amount) %></h5>
 </div>

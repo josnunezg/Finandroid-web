@@ -12,14 +12,12 @@
         <ul id="nav-mobile" class="right">
           <li>
             <a class="dropdown-button" id="btn-notifications" data-activates='notifications' data-constrainwidth="false" data-beloworigin="true" data-gutter="10" data-stoppropagation="true" style="position: relative" >
-              <% if flash.any? %>
-                <span class="red badge white-text count-notification" id="count-notifications">
-                  <%= flash.count %>
-                </span>
-              <% end %>
+              <span class="<%= flash.any? ? 'red' : 'grey lighten-1' %> badge white-text count-notification" id="count-notifications">
+                <%= flash.count %>
+              </span>
               <%= material_icon.notifications.css_class("grey-text text-darken-2").md_24 %>
             </a>
-            <div id="notifications" class="dropdown-content" style="padding: 10px; min-width: 500px; min-height: 300px">
+            <div id="notifications" class="dropdown-content grey lighten-4 z-depth-4" style="padding: 10px; min-width: 500px; min-height: 300px">
               <h6 class="black-text center">Notificaciones</h6>
               <% flash.each_with_index do |(msg_type, msg), idx| %>
                 <% type = msg_type.gsub('alert', 'red').gsub('notice', 'green') %>
@@ -29,7 +27,7 @@
                   </span>
                 </div>
               <% end %>
-              <span style="position: absolute; bottom: 0px; left: 220px">
+              <span style="position: absolute; bottom: 0; left: 15em">
                 <a class="btn-floating waves-effect waves-light white" onclick="$('.card-panel').remove()">
                   <%= material_icon.delete.css_class('black-text') %>
                 </a>
@@ -42,7 +40,7 @@
             </a>
             <ul id='menu-profile' class="dropdown-content">
               <li>
-                  <%= link_to profile_path(current_user), class: "black-text" do %>
+                  <%= link_to profile_path(current_user), class: "black-text", remote: true do %>
                     Perfil
                     <%= material_icon.person %>
                   <% end %>
@@ -76,8 +74,9 @@
 </nav>
 
 
-<span style="position: absolute; right: 20px; bottom: 20px;">
+<span style="position: fixed; right: 1em; bottom: 1em; z-index: 1000">
   <% if model == Group %>
+  <% group = current_user.group %>
   <% if can? :update, group %>
       <%= link_to invite_users_group_path(group), class: "btn-floating btn-large waves-effect waves-light z-depth-4 hoverable", remote: true, id: "add-user", onmouseover: "buttonHoverable(this)", onmouseout: "buttonHoverable(this)" do %>
         <%= material_icon.person_add %>

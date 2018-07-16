@@ -37,3 +37,12 @@ main {
   height: 20px !important;
   right: 10px;
 }
+
+.card-balance {
+  padding: 0 5em 0 5em !important;
+  border-radius: 10em;
+  position: fixed;
+  bottom: 0;
+  z-index: 2000;
+  left: 40em;
+}

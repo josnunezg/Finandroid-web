@@ -22,7 +22,11 @@ $(document).ready(function() {
   });
   $(".modal").modal();
   $("#btn-notifications").on('click', function() {
-    $("#count-notifications").remove();
+    var count_badge = $("#count-notifications");
+    var count = parseInt(count_badge.html().trim());
+    if(count > 0) {
+      $("#count-notifications").removeClass('red').addClass("grey lighten-1").html("0");
+    }
   })
 })
 

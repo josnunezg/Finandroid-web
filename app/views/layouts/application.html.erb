@@ -33,6 +33,10 @@
           <h4 class="center white-text">Finandroid</h4>
         </li>
         <div style="padding: 0px 10px 0px 10px">
+          <li class="divider"></li>
+          <li class="center">
+            <p class="white-text"><%= current_user.full_name %></p>
+          </li>
           <li class="divider white"></li>
         </div>
         <div style="padding: 10px 10px 0px 10px">
@@ -45,6 +49,9 @@
             </li>
           <% end %>
         </div>
+        <div class="background" style="opacity: 0.05; position: absolute;; bottom: 0;">
+          <%= image_tag(asset_url("cordillera.jpg"), height: 750) %>
+        </div>
       </ul>
       <%= render 'partials/sidebar', model: params[:controller].singularize.camelize.constantize %>
     </header>
@@ -56,6 +63,9 @@
           </div>
         </div>
         <div class="modal" id="modal-group">
+        </div>
+        <div class="modal" id="modal-profile">
+
         </div>
       </div>
     </main>

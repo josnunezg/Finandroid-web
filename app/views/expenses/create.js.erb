@@ -13,6 +13,21 @@
     "<td>$<%= @expense.processed_ammount %>.-</td>"+
     "</tr>"
     )
+  <% if @expense.is_alertable? %>
+  var panel = $("#notifications");
+  var count = panel.children("div").length + 1;
+  var notifications = $("#count-notifications");
+  var count_not = parseInt(notifications.html().trim());
+  panel.append(
+    "<div class='card-panel red center' style='padding: 4px' id='notification-"+(count+1)+"' onclick='removeNotification(this)'>"+
+    "<span class='white-text'>"+
+    "El gasto '<%=@expense.name%>' de la cuenta <strong><%= @expense.bank_account.name %></strong> es mayor a lo común"+
+    "</span>"+
+    "</div>"
+  );
+  if(!notifications.attr("class").includes('red')) notifications.addClass("red").removeClass("grey lighten-1");
+  notifications.html(count_not + 1);
+  <% end %>
   $("div.container").append('<%= link_to "", expense_path(@expense), remote: true, style: "display: none;", id: "expense-#{@expense.id}-link" %>');
   $("#modal-expense").modal('close');
   Materialize.toast("Gasto creado", 4000, 'green rounded');

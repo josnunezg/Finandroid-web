@@ -14,3 +14,7 @@
 <div class="modal" id="balance-bank_account">
 
 </div>
+
+<div class="card-panel center card-balance hoverable z-depth-4">
+  <h5>$<%= @bank_accounts.sum(:balance) %></h5>
+</div>
