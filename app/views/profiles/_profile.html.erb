@@ -1,3 +1,23 @@
 <div class="modal-content">
-
+  <table class="responsive-table centered bordered">
+    <tr>
+      <td><%= current_user.first_name %></td>
+      <td><%= current_user.last_name %></td>
+    </tr>
+    <tr>
+      <td><%= current_user.username %></td>
+      <td><%= current_user.email %></td>
+    </tr>
+    <% if current_user.group %>
+      <tr>
+        <td> <%= Group.model_name.human %> </td>
+        <td> <%= current_user.group.name %> </td>
+      </tr>
+    <% end %>
+  </table>
+  <hr style="margin-top: 14em">
+  <%= button_to "Cerrar cuenta", registration_path(current_user),class: "btn-flat", data: { confirm: "Are you sure?" }, method: :delete %>
+</div>
+<div class="modal-footer">
+  <%= link_to "Editar", edit_user_registration_path ,class: "modal-action waves-effect waves-green btn-flat", remote: true %>
 </div>

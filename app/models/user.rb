@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   scope :to_groups, ->(id) { where.not(id: id) }
 
   before_save :assign_uuid, if: Proc.new{ |u| u.uuid.blank? }
+
+  before_destroy :destroy_all_childrens
+  before_destroy :update_group
   # Muestra el nombre completo
   def full_name
     "#{first_name} #{last_name}"
@@ -25,5 +28,20 @@ class User < ActiveRecord::Base
 
   def my_group
     Group.find_by(user_owner: self.id)
+  end
+
+  def destroy_all_childrens
+    self.bank_accounts.destroy_all
+    self.categories.destroy_all
+    self.summaries.destroy_all
+  end
+
+  def update_group
+    group = self.group
+    return if group.user_owner != self.id
+    group.destroy if group.user_ids.count == 1
+    return unless self.group
+    owner = (group.user_ids - [self.id]).first
+    group.update(user_owner: owner)
   end
 end

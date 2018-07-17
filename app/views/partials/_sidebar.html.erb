@@ -17,7 +17,7 @@
               </span>
               <%= material_icon.notifications.css_class("grey-text text-darken-2").md_24 %>
             </a>
-            <div id="notifications" class="dropdown-content grey lighten-4 z-depth-4" style="padding: 10px; min-width: 500px; min-height: 300px">
+            <div id="notifications" class="dropdown-content grey lighten-4 z-depth-4" style="padding: 10px; min-width: 31.25rem; min-height: 18.75rem">
               <h6 class="black-text center">Notificaciones</h6>
               <% flash.each_with_index do |(msg_type, msg), idx| %>
                 <% type = msg_type.gsub('alert', 'red').gsub('notice', 'green') %>
@@ -27,7 +27,7 @@
                   </span>
                 </div>
               <% end %>
-              <span style="position: absolute; bottom: 0; left: 15em">
+              <span style="position: absolute; bottom: 0; left: 14em">
                 <a class="btn-floating waves-effect waves-light white" onclick="$('.card-panel').remove()">
                   <%= material_icon.delete.css_class('black-text') %>
                 </a>

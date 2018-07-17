@@ -24,7 +24,7 @@ Rails.application.routes.draw do
       end
     end
     resources :salaries
-    resources :profiles, only: [:show, :edit]
+    resources :profiles, only: [:show, :edit, :update]
 
     namespace :api do
       resources :bank_accounts

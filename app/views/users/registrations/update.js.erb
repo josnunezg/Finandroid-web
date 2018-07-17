@@ -1,0 +1,8 @@
+<% if resource.errors.full_messages.any? %>
+  <% resource.errors.full_messages.each do |msg| %>
+  Materialize.toast("<%= msg %>", 4000, 'red rounded')
+  <% end %>
+<% else %>
+$("#modal-profile").modal('close')
+Materialize.toast('Cuenta modificada', 3000, 'green rounded')
+<% end %>

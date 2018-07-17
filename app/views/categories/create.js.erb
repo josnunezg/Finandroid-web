@@ -5,7 +5,7 @@
 <% else %>
   var id = "<%= @category.id %>";
   $("#modal-category").modal('close');
-  $("#category-index").append("<div class='col m6 l6 xl6' id='category-"+id+"'><%= j render(partial: @category) %></div>");
+  $("#category-index").append("<div class='col m12 l6 xl6' id='category-"+id+"'><%= j render(partial: @category) %></div>");
   $('.modal').modal();
   Materialize.toast("Categoria creada", 4000, 'green rounded');
 <% end %>

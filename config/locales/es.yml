@@ -53,6 +53,7 @@ es:
         email: Correo
         password: Contraseña
         password_confirmation: Confirma contraseña
+        current_password: Contraseña actual
         username: Usuario
         remember_me: Mantener sesión iniciada
     errors:
@@ -73,6 +74,10 @@ es:
               blank: no puede estar en blanco
             bank_account_id:
               blank: es obligatoria
+        user:
+          attributes:
+            current_password:
+              blank: es obligatoria para realizar cambios
   actions:
     new: Nuevo %{model}
     edit: Editar %{model}

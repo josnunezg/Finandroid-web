@@ -5,6 +5,8 @@ class BankAccount < ActiveRecord::Base
 
   validates_presence_of :name
 
+  before_destroy :destroy_expenses_and_salaries
+
   def self.find_with_balance(id)
     self.includes(:expenses, :salaries).find(id) rescue nil
   end
@@ -33,5 +35,10 @@ class BankAccount < ActiveRecord::Base
     deviation = sum / (count - 1)
     deviation **= 0.5
     deviation
+  end
+
+  def destroy_expenses_and_salaries
+    self.salaries.destroy_all
+    self.expenses.destroy_all
   end
 end

@@ -1,0 +1,45 @@
+<%= form_for current_user, url: profile_path(current_user), method: :put, remote: true do |f| %>
+  <div class="modal-content">
+    <div class="row">
+      <div class="input-field col m12 l6 xl6">
+        <%= f.text_field :first_name, class: "validate" %>
+        <%= f.label :first_name, class: "active" %>
+      </div>
+      <div class="input-field col m12 l6 xl6">
+        <%= f.text_field :last_name, class: "validate" %>
+        <%= f.label :last_name, class: "active" %>
+      </div>
+      <div class="input-field col m12 l6 xl6">
+        <%= f.email_field :email, class: "validate" %>
+        <%= f.label :email, class: "active" %>
+      </div>
+      <div class="input-field col m12 l6 xl6">
+        <%= f.text_field :username, class: "validate"%>
+        <%= f.label :username, class: "active" %>
+      </div>
+      <hr>
+      <p class="center">
+        <strong>Cambiar contraseña</strong>
+      </p>
+      <hr>
+      <div class="input-field col m12 l12 xl12">
+        <%= f.password_field :current_password, class: "validate center" %>
+        <%= f.label :current_password %>
+      </div>
+      <div class="input-field col m12 l6 xl6">
+        <%= f.password_field :password, class: "validate" %>
+        <%= f.label :password %>
+      </div>
+      <div class="input-field col m12 l6 xl6">
+        <%= f.password_field :password_confirmation, class: "validate" %>
+        <%= f.label :password_confirmation %>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a class="modal-action modal-close waves-effect waves-green btn-flat">
+      <%= t('general.cancel') %>
+    </a>
+    <%= f.submit "Actualizar", class: "modal-action waves-effect waves-green btn-flat" %>
+  </div>
+<% end %>
