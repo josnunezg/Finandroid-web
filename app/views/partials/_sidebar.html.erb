@@ -1,10 +1,12 @@
 <nav class="nav-extended grey lighten-4 z-depth-0">
     <div class="nav-wrapper">
-      <a data-activates="mobile-demo" class="button-collapse grey-text"><i class="material-icons">menu</i></a>
+      <a data-activates="mobile-demo" class="button-collapse btn-large btn-floating white">
+        <%= material_icon.send(icon(model)).css_class("black-text") %>
+      </a>
         <a class="brand-logo grey-text text-darken-2"><%= model.model_name.human(count: 2) %></a>
         <ul id="nav-mobile" class="left">
           <li>
-            <a class="btn-floating white">
+            <a class="btn-floating white hide-on-small-only">
               <%= material_icon.send(icon(model)).css_class("black-text") %>
             </a>
           </li>
