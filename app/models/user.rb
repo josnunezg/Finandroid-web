@@ -37,6 +37,7 @@ class User < ActiveRecord::Base
   end
 
   def update_group
+    return unless self.group
     group = self.group
     return if group.user_owner != self.id
     group.destroy if group.user_ids.count == 1

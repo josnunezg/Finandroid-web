@@ -1,11 +1,13 @@
 class Summary < ActiveRecord::Base
   belongs_to :user
+  validates_presence_of :trackable
 
   def can_watch? usr
     self.user.group.user_ids.includes(usr.id) && self.share rescue false
   end
 
   def scope
+    return unless self.trackable
     model = self.trackable.constantize
     user_search = [self.user_id]
     user_search << nil if model == Category
