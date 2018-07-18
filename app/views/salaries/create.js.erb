@@ -12,6 +12,8 @@
     "<td>$<%= @salary.processed_ammount %>.-</td>"+
     "</tr>"
     )
+  var amount = parseInt($("#amount-salaries").html().trim().split("$")[1]);
+  $("#amount-salaries").html("$"+(parseInt("<%= @salary.amount %>") + amount));
   $("div.container").append('<%= link_to "", salary_path(@salary), remote: true, style: "display: none;", id: "salary-#{@salary.id}-link" %>');
   $("#modal-salary").modal('close');
   Materialize.toast("Ingreso creado", 4000, 'green rounded');

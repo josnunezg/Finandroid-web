@@ -1,3 +1,5 @@
 $("#modal-salary").modal('close');
 Materialize.toast("Ingreso eliminado", 4000, 'green rounded');
 $("#salary-<%= @salary.id %>-tr").remove();
+var amount = parseInt($("#amount-salaries").html().trim().split("$")[1]);
+$("#amount-salaries").html("$"+(amount - parseInt("<%= @salary.amount %>")));

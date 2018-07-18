@@ -1,3 +1,5 @@
 $("#modal-expense").modal('close');
 Materialize.toast("Gasto eliminado", 4000, 'green rounded');
 $("#expense-<%= @expense.id %>-tr").remove();
+var amount = parseInt($("#amount-expenses").html().trim().split("$")[1]);
+$("#amount-expenses").html("$"+(amount - parseInt("<%= @salary.amount %>")));
