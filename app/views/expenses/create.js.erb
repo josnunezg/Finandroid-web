@@ -14,7 +14,7 @@
     "</tr>"
     )
   var amount = parseInt($("#amount-expenses").html().trim().split("$")[1]);
-  $("#amount-expenses").html("$"+(parseInt("<%= @salary.amount %>") + amount));
+  $("#amount-expenses").html("$"+(parseInt("<%= @expense.amount %>") + amount));
   <% if @expense.is_alertable? %>
   var panel = $("#notifications");
   var count = panel.children("div").length + 1;
