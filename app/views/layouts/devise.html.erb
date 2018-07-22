@@ -26,6 +26,9 @@
     <%= csrf_meta_tags %>
   </head>
   <body class="cyan">
+    <div id="finandroid_app">
+
+    </div>
     <main>
       <div class="section center">
         <%= image_tag(asset_url("psyduck.png"), width: 200, class: 'center-align') %>
@@ -55,5 +58,6 @@
         </div>
       </div>
     </footer>
+    <%= javascript_include_tag 'application' %>
   </body>
 </html>

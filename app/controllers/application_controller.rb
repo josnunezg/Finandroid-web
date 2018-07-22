@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :authenticate_user!
   protect_from_forgery with: :exception
-  layout :layout_by_resource
+  layout "finandroid_app"
 
 
   def set_locale
@@ -13,15 +13,5 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to main_app.root_url, :alert => exception.message
-  end
-
-  private
-
-  def layout_by_resource
-    if devise_controller?
-      "devise"
-    else
-      "application"
-    end
   end
 end

@@ -1,12 +1,18 @@
 Rails.application.routes.draw do
 
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/, defaults: {locale: "es"} do
-    devise_for :users, controllers: {
-      confirmations: 'users/confirmations',
-      passwords: 'users/passwords',
-      registrations: 'users/registrations',
-      sessions: 'users/sessions'
-    }
+    devise_for :users,
+               :controllers => {
+                 confirmations: 'users/confirmations',
+                 passwords: 'users/passwords',
+                 registrations: 'users/registrations',
+                 sessions: 'users/sessions'
+               },
+               :path_names => {
+                 sign_in: 'login'
+               },
+               :path => '/'
+
 
     resources :summaries, except: [:show] do
       member do
